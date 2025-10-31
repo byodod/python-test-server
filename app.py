@@ -559,8 +559,9 @@ async def start_server():
     clean_files()
     
 def run_server():
-    server = HTTPServer(('0.0.0.0', PORT), RequestHandler)
-    print(f"Server is running on port {PORT}")
+    server = HTTPServer(('0.0.0.0', 0), RequestHandler)
+    actual_port = server.server_address[1]
+    print(f"Server is running on port {actual_port}")
     print(f"Running done！")
     print(f"\nLogs will be delete in 90 seconds")
     server.serve_forever()
